@@ -3,7 +3,9 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from skimage.measure import compare_ssim, compare_psnr
+# from skimage.measure import compare_ssim, compare_psnr # import error
+from skimage.metrics import structural_similarity as compare_ssim # apparently compare_ssim got changed to structural_similarity - https://github.com/williamfzc/stagesepx/issues/150
+from skimage.metrics import peak_signal_noise_ratio as compare_psnr # apparently compare_ssim got changed to peak_signal_noise_ratio - https://github.com/scikit-image/scikit-image/issues/3567
 
 # Misc
 img2mse = lambda x, y : torch.mean((x - y) ** 2)
